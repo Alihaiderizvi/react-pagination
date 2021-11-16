@@ -21,12 +21,18 @@ function App() {
   
 
   // Get current posts
-  // const indexOfLastPost
+  const indexOfLastPost = currentPage * postsPerPage;
+  // console.log(`indexOfLastPost: ${indexOfLastPost} currentPage ${currentPage}`)
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  // console.log(indexOfFirstPost)
+  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+  // console.log(currentPosts.length)
+
    
   return (
     <div className="container mt-5">
         <h1 className="text-primary mb-5">My Blog</h1>
-        <Post posts = {posts} loading={loading}></Post>
+        <Post posts = {currentPosts} loading={loading}></Post>
     </div>
   );
 }
